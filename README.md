@@ -6,9 +6,9 @@
 
 By the end of this, students should be able to:
 
-- Authenticate a front end application with a Rails API
-- Use `localStorage` for storing session information
-- Restrict access to the front end based on authorization
+- Authenticate users on an AngularJS application with a Rails API
+- Use `localStorage` for storing session information (as a JSON string)
+- Restrict access to any routes unless users are authorized
 
 ## Instructions
 
