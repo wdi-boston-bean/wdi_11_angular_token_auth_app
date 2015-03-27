@@ -19,20 +19,19 @@ angular.module('AuthApp', [
   'ngTouch',
   'MainController',
   'MainDirective'
-]).run(function( $rootScope, $http, $window, $location, AuthFactory) {
-  if (AuthFactory.isAuthenticated()) {
+]).run(function($rootScope,$http,$window,$location,AuthFactory){
+  if(AuthFactory.isAuthenticated()){
     var data = JSON.parse($window.localStorage.getItem('ga-user'));
-    $http.defaults.headers.common.Authorization = 'Token token=' + data.token;
-  }
-  else {
+    $http.defaults.headers.common.Authorization = 'Token token='+data.token;
+  } else {
     $location.path('/login');
   }
 
-  $rootScope.$on('$routeChangeStart', function( event, next ) {
-    console.log(event, next);
+  $rootScope.$on('$routeChangeStart',function(event,next){
+    if(!AuthFactory.isAuthenticated()){ 
+      $location.path('/login');
+    } else {
+      PostsFactory.getPosts();
+    }
   });
-  $rootScope.$on('$routeChangeSuccess', function( event, next ) {
-    console.log(event, next);
-  });
-
 });
