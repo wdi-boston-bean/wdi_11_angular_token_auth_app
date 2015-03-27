@@ -5,8 +5,7 @@
 
   angular
     .module('AuthApp')
-    .config(authAppConfig)
-    .controller('NavbarCtrl', NavbarCtrl);
+    .config(authAppConfig);
 
   function authAppConfig( $routeProvider ) {
     $routeProvider
@@ -25,16 +24,6 @@
       .otherwise({
         redirectTo: '/'
       });
-  }
-
-  NavbarCtrl.$inject = ['$location'];
-
-  function NavbarCtrl( $location ) {
-    var vm = this;
-
-    vm.isActive = function( viewLocation ) {
-      return viewLoaction === $location.path();
-    };
   }
 
 })();

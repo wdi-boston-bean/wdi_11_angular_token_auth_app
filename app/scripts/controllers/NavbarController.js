@@ -5,6 +5,7 @@ angular
 navbarController.$inject = ['AuthFactory', '$location'];
 
 function navbarController( AuthFactory, $location ) {
+  console.log('do I exist?');
   var vm = this;
 
   vm.isLoggedin = function() {
